@@ -1,7 +1,8 @@
 
 from django.http import HttpResponseForbidden
+from project_middleware.models import Store
 
-ALLOWED_IPS = ["123.45.67.89", "987.56.65.21", "127.0.0.1"]
+ALLOWED_IPS = ["123.45.67.89", "987.56.65.21"]
 
 class IPBlockingMIddleware:
     def get_client_ip(self, request):
@@ -22,3 +23,22 @@ class IPBlockingMIddleware:
             return HttpResponseForbidden("Forbidden: Your IP is blocked.")
         
         return self.get_response(request)
+
+
+class CheckBMPHeader:
+    
+    def __init__(self, get_response) -> None:
+        self.get_response = get_response
+
+
+    def __call__(self, request):
+        headers = request.headers
+
+        if "bmp" not in headers:
+            return HttpResponseForbidden("Missing: Header BMP")
+        else:
+            if not Store.objects.filter(bmp_id = headers.get("bmp")).exists():
+                return HttpResponseForbidden("Invalid: BMP")
+            
+        return self.get_response(request)
+        

@@ -48,7 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'project_middleware.middleware.midddleware.IPBlockingMIddleware'
+    'project_middleware.middleware.midddleware.IPBlockingMIddleware',
+    'project_middleware.middleware.midddleware.CheckBMPHeader',
 ]
 
 ROOT_URLCONF = 'revision.urls'
