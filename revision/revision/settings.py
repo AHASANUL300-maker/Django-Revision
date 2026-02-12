@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'project_middleware',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -49,8 +50,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'project_middleware.middleware.midddleware.IPBlockingMIddleware',
-    'project_middleware.middleware.midddleware.CheckBMPHeader',
+    # 'project_middleware.middleware.midddleware.CheckBMPHeader',
 ]
+
+AUTH_USER_MODEL = "accounts.AwesomeCustomUser"
 
 ROOT_URLCONF = 'revision.urls'
 
@@ -75,10 +78,15 @@ WSGI_APPLICATION = 'revision.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+#POSTGRE SQL SERVER
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default':{
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'Awesome_DB',
+        'USER': 'postgres',
+        'PASSWORD': 'Ahasan@12345',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

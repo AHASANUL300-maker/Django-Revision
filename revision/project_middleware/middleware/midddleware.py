@@ -25,20 +25,20 @@ class IPBlockingMIddleware:
         return self.get_response(request)
 
 
-class CheckBMPHeader:
+# class CheckBMPHeader:
     
-    def __init__(self, get_response) -> None:
-        self.get_response = get_response
+#     def __init__(self, get_response) -> None:
+#         self.get_response = get_response
 
 
-    def __call__(self, request):
-        headers = request.headers
+#     def __call__(self, request):
+#         headers = request.headers
 
-        if "bmp" not in headers:
-            return HttpResponseForbidden("Missing: Header BMP")
-        else:
-            if not Store.objects.filter(bmp_id = headers.get("bmp")).exists():
-                return HttpResponseForbidden("Invalid: BMP")
+#         if "bmp" not in headers:
+#             return HttpResponseForbidden("Missing: Header BMP")
+#         else:
+#             if not Store.objects.filter(bmp_id = headers.get("bmp")).exists():
+#                 return HttpResponseForbidden("Invalid: BMP")
             
-        return self.get_response(request)
+#         return self.get_response(request)
         
