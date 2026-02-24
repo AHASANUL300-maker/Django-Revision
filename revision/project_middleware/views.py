@@ -27,7 +27,5 @@ def contact(request):
 
     # return JsonResponse(data)
 
-def about(request):
-    pass
 
 

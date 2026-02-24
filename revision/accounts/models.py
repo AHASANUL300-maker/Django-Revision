@@ -16,6 +16,7 @@ class AwesomeCustomUser(AbstractUser):
     phone_number = models.CharField(max_length=12, unique=True)
     profile_image = models.ImageField(upload_to="profile", null=True, blank=True)
     is_verified = models.BooleanField(default=False)
+    otp = models.IntegerField(default=0)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
